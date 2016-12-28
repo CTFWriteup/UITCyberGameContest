@@ -1,0 +1,75 @@
+#RLE in java code
+#Author by Ei Mon Theint
+Date 27/12/2016 10:44 PM
+
+import java.util.Scanner;
+
+public class RunLengthEncoding {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		String encodedString=sc.nextLine();
+		char selected=' ';
+		for(int i=0;i<encodedString.length();){
+			if(!Character.isDigit(encodedString.charAt(i))){
+				selected=encodedString.charAt(i);
+				i++;
+			}
+			else if(Character.isDigit(encodedString.charAt(i))){
+				int intStart=i;
+				while(Character.isDigit(encodedString.charAt(i))){
+					if(i!=encodedString.length()-1){
+						i++;
+					}
+					else{
+						i++;
+						break;
+					}
+				}
+				for(int j=0;j<Integer.parseInt(encodedString.substring(intStart, i));j++){
+					System.out.print(selected);
+				}
+			}
+		}
+	}
+
+}
+
+RLE => Run length encoding....
+Example ::
+a3b1g4 ==> aaabgggg
+f1l1a1g1=> flag
+
+Question is ...f1l1a1g1{1u5s3e4t6g4v10f10o9z15q10m4l10w3y19y5e3f7c4b5n10}1
+Java ကို..Run လိုက္ေလ....Input ေတာင္းရင္..အေပၚကဟာေလးကိုထည္႔လိုက္ေပါ...
+
+အဲတာဆို..အေၿဖကဒီလိုေလးထက္လာမွာေန္ာ....
+
+flag{uuuuussseeeettttttggggvvvvvvvvvvffffffffffooooooooozzzzzzzzzzzzzzzqqqqqqqqqqmmmmllllllllllwwwyyyyyyyyyyyyyyyyyyyyyyyyeeefffffffccccbbbbbnnnnnnnnnn}
+
+
+Python ဆုိလည္းရတာပဲေနာ္...
+
+#Python
+key = "f1l1a1g1{1u5s3e4t6g4v10f10o9z15q10m4l10w3y19y5e3f7c4b5n10}1"
+text=''
+i = 0
+while( i < len(key)-1 ):
+    if key[i] in 'abcdefghijklmnopqrstuvwxyz{}':
+        c = key[i]
+        i += 1
+        j = i
+        while i < len(key) and key[i] in '0123456789':
+            i += 1
+        num = key[j:i]
+        print c+':'+num
+        text += c * int(num)
+print text
+
+အဲတာေလးကို..run ရင္လည္းအေၿဖကရတာပဲလို...မေက်နပ္ရင္..ကိုယ္တိုင္ code ေရးလိုက္ေပါ႔..ငိငိ...
+
+
+
+
+
